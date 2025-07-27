@@ -1,0 +1,115 @@
+import React, { useState } from 'react';
+import { Heart, Sparkles, Star, Smile } from 'lucide-react';
+
+const ComplimentGenerator = () => {
+  const compliments = [
+    "You have an amazing ability to make others feel valued and heard.",
+    "Your creativity inspires everyone around you.",
+    "You bring out the best in people with your kindness.",
+    "Your sense of humor can brighten anyone's day.",
+    "You have a wonderful way of seeing the good in every situation.",
+    "Your determination is truly admirable.",
+    "You make the world a better place just by being in it.",
+    "Your empathy and understanding are gifts to those around you.",
+    "You have an incredible talent for making complex things seem simple.",
+    "Your positive energy is absolutely contagious.",
+    "You're the kind of person others feel lucky to know.",
+    "Your wisdom and insight always seem to come at just the right time.",
+    "You have a beautiful way of expressing yourself.",
+    "Your courage to be authentically yourself is inspiring.",
+    "You bring such warmth and joy to every room you enter.",
+    "Your thoughtfulness never goes unnoticed.",
+    "You have an amazing ability to find solutions where others see problems.",
+    "Your genuine care for others shines through in everything you do.",
+    "You're incredibly talented at making people feel comfortable and welcome.",
+    "Your passion for life is absolutely infectious.",
+    "You have such a unique and wonderful perspective on the world.",
+    "Your resilience in facing challenges is truly remarkable.",
+    "You're a natural at bringing people together.",
+    "Your intelligence is matched only by your kindness.",
+    "You have an extraordinary gift for making ordinary moments special.",
+    "Your confidence inspires others to believe in themselves too.",
+    "You're incredibly good at seeing the potential in people and situations.",
+    "Your generosity of spirit is a rare and beautiful thing.",
+    "You have a wonderful ability to make others laugh and feel at ease.",
+    "Your dedication to growing and learning is truly admirable."
+  ];
+
+  const [currentCompliment, setCurrentCompliment] = useState("Click the button below to receive your compliment!");
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const generateCompliment = () => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      const randomIndex = Math.floor(Math.random() * compliments.length);
+      setCurrentCompliment(compliments[randomIndex]);
+      setIsAnimating(false);
+    }, 300);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100 flex items-center justify-center p-4">
+      <div className="max-w-2xl w-full">
+        <div className="bg-white rounded-3xl shadow-2xl p-8 text-center relative overflow-hidden">
+          {/* Decorative elements */}
+          <div className="absolute top-4 left-4 text-pink-300 opacity-50">
+            <Heart size={24} />
+          </div>
+          <div className="absolute top-4 right-4 text-purple-300 opacity-50">
+            <Sparkles size={24} />
+          </div>
+          <div className="absolute bottom-4 left-4 text-indigo-300 opacity-50">
+            <Star size={24} />
+          </div>
+          <div className="absolute bottom-4 right-4 text-pink-300 opacity-50">
+            <Smile size={24} />
+          </div>
+
+          {/* Header */}
+          <div className="mb-8">
+            <h1 className="text-4xl font-bold text-gray-800 mb-2">
+              ✨ Compliment Generator ✨
+            </h1>
+            <p className="text-gray-600">
+              Everyone deserves to hear something wonderful about themselves
+            </p>
+          </div>
+
+          {/* Compliment Display */}
+          <div className="mb-8 min-h-[120px] flex items-center justify-center">
+            <p 
+              className={`text-xl text-gray-700 leading-relaxed px-6 transition-all duration-300 ${
+                isAnimating ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
+              }`}
+            >
+              "{currentCompliment}"
+            </p>
+          </div>
+
+          {/* Generate Button */}
+          <button
+            onClick={generateCompliment}
+            disabled={isAnimating}
+            className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-4 px-8 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+          >
+            {isAnimating ? (
+              <span className="flex items-center justify-center">
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                Generating...
+              </span>
+            ) : (
+              "Generate New Compliment"
+            )}
+          </button>
+
+          {/* Footer */}
+          <div className="mt-8 text-sm text-gray-500">
+            <p>Share the positivity and brighten someone's day! 💫</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ComplimentGenerator;
