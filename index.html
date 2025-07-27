@@ -1,115 +1,367 @@
-import React, { useState } from 'react';
-import { Heart, Sparkles, Star, Smile } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Compliment Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-const ComplimentGenerator = () => {
-  const compliments = [
-    "You have an amazing ability to make others feel valued and heard.",
-    "Your creativity inspires everyone around you.",
-    "You bring out the best in people with your kindness.",
-    "Your sense of humor can brighten anyone's day.",
-    "You have a wonderful way of seeing the good in every situation.",
-    "Your determination is truly admirable.",
-    "You make the world a better place just by being in it.",
-    "Your empathy and understanding are gifts to those around you.",
-    "You have an incredible talent for making complex things seem simple.",
-    "Your positive energy is absolutely contagious.",
-    "You're the kind of person others feel lucky to know.",
-    "Your wisdom and insight always seem to come at just the right time.",
-    "You have a beautiful way of expressing yourself.",
-    "Your courage to be authentically yourself is inspiring.",
-    "You bring such warmth and joy to every room you enter.",
-    "Your thoughtfulness never goes unnoticed.",
-    "You have an amazing ability to find solutions where others see problems.",
-    "Your genuine care for others shines through in everything you do.",
-    "You're incredibly talented at making people feel comfortable and welcome.",
-    "Your passion for life is absolutely infectious.",
-    "You have such a unique and wonderful perspective on the world.",
-    "Your resilience in facing challenges is truly remarkable.",
-    "You're a natural at bringing people together.",
-    "Your intelligence is matched only by your kindness.",
-    "You have an extraordinary gift for making ordinary moments special.",
-    "Your confidence inspires others to believe in themselves too.",
-    "You're incredibly good at seeing the potential in people and situations.",
-    "Your generosity of spirit is a rare and beautiful thing.",
-    "You have a wonderful ability to make others laugh and feel at ease.",
-    "Your dedication to growing and learning is truly admirable."
-  ];
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fce7f3, #f3e8ff, #e0e7ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
 
-  const [currentCompliment, setCurrentCompliment] = useState("Click the button below to receive your compliment!");
-  const [isAnimating, setIsAnimating] = useState(false);
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
 
-  const generateCompliment = () => {
-    setIsAnimating(true);
-    setTimeout(() => {
-      const randomIndex = Math.floor(Math.random() * compliments.length);
-      setCurrentCompliment(compliments[randomIndex]);
-      setIsAnimating(false);
-    }, 300);
-  };
+        .card {
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            padding: 60px 40px;
+            text-center;
+            position: relative;
+            overflow: hidden;
+        }
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100 flex items-center justify-center p-4">
-      <div className="max-w-2xl w-full">
-        <div className="bg-white rounded-3xl shadow-2xl p-8 text-center relative overflow-hidden">
-          {/* Decorative elements */}
-          <div className="absolute top-4 left-4 text-pink-300 opacity-50">
-            <Heart size={24} />
-          </div>
-          <div className="absolute top-4 right-4 text-purple-300 opacity-50">
-            <Sparkles size={24} />
-          </div>
-          <div className="absolute bottom-4 left-4 text-indigo-300 opacity-50">
-            <Star size={24} />
-          </div>
-          <div className="absolute bottom-4 right-4 text-pink-300 opacity-50">
-            <Smile size={24} />
-          </div>
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ec4899, #8b5cf6, #6366f1);
+        }
 
-          {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-4xl font-bold text-gray-800 mb-2">
-              ✨ Compliment Generator ✨
-            </h1>
-            <p className="text-gray-600">
-              Everyone deserves to hear something wonderful about themselves
-            </p>
-          </div>
+        .decorative-icon {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.3;
+        }
 
-          {/* Compliment Display */}
-          <div className="mb-8 min-h-[120px] flex items-center justify-center">
-            <p 
-              className={`text-xl text-gray-700 leading-relaxed px-6 transition-all duration-300 ${
-                isAnimating ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
-              }`}
-            >
-              "{currentCompliment}"
-            </p>
-          </div>
+        .icon-heart { top: 20px; left: 20px; color: #ec4899; }
+        .icon-sparkles { top: 20px; right: 20px; color: #8b5cf6; }
+        .icon-star { bottom: 20px; left: 20px; color: #6366f1; }
+        .icon-smile { bottom: 20px; right: 20px; color: #ec4899; }
 
-          {/* Generate Button */}
-          <button
-            onClick={generateCompliment}
-            disabled={isAnimating}
-            className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-4 px-8 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-          >
-            {isAnimating ? (
-              <span className="flex items-center justify-center">
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                Generating...
-              </span>
-            ) : (
-              "Generate New Compliment"
-            )}
-          </button>
+        .header {
+            margin-bottom: 50px;
+        }
 
-          {/* Footer */}
-          <div className="mt-8 text-sm text-gray-500">
-            <p>Share the positivity and brighten someone's day! 💫</p>
-          </div>
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #374151;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #6b7280;
+            font-weight: 300;
+        }
+
+        .compliment-display {
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 50px;
+            padding: 0 30px;
+        }
+
+        .compliment-text {
+            font-size: 1.3rem;
+            color: #374151;
+            line-height: 1.6;
+            font-style: italic;
+            transition: all 0.3s ease;
+            max-width: 600px;
+        }
+
+        .compliment-text.fade-out {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .compliment-text.fade-in {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(236, 72, 153, 0.4);
+            background: linear-gradient(135deg, #db2777, #7c3aed);
+        }
+
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+
+        .generate-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        .stats {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #8b5cf6;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        .decorative-icon {
+            animation: sparkle 3s ease-in-out infinite;
+        }
+
+        .icon-sparkles { animation-delay: 0.5s; }
+        .icon-star { animation-delay: 1s; }
+        .icon-smile { animation-delay: 1.5s; }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 40px 30px;
+            }
+
+            .title {
+                font-size: 2.2rem;
+            }
+
+            .compliment-text {
+                font-size: 1.1rem;
+            }
+
+            .generate-btn {
+                padding: 16px 30px;
+                font-size: 1rem;
+            }
+
+            .stats {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <!-- Decorative Icons -->
+            <div class="decorative-icon icon-heart">❤️</div>
+            <div class="decorative-icon icon-sparkles">✨</div>
+            <div class="decorative-icon icon-star">⭐</div>
+            <div class="decorative-icon icon-smile">😊</div>
+
+            <!-- Header -->
+            <div class="header">
+                <h1 class="title">✨ Compliment Generator ✨</h1>
+                <p class="subtitle">Everyone deserves to hear something wonderful about themselves</p>
+            </div>
+
+            <!-- Compliment Display -->
+            <div class="compliment-display">
+                <p id="complimentText" class="compliment-text fade-in">
+                    "Click the button below to receive your compliment!"
+                </p>
+            </div>
+
+            <!-- Generate Button -->
+            <button id="generateBtn" class="generate-btn">
+                Generate New Compliment
+            </button>
+
+            <!-- Statistics -->
+            <div class="stats">
+                <div class="stat-item">
+                    <div id="complimentCount" class="stat-number">0</div>
+                    <div class="stat-label">Compliments Generated</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">30</div>
+                    <div class="stat-label">Unique Compliments</div>
+                </div>
+                <div class="stat-item">
+                    <div id="positivityScore" class="stat-number">100%</div>
+                    <div class="stat-label">Positivity Rate</div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p>Share the positivity and brighten someone's day! 💫</p>
+            </div>
         </div>
-      </div>
     </div>
-  );
-};
 
-export default ComplimentGenerator;
+    <script>
+        const compliments = [
+            "You have an amazing ability to make others feel valued and heard.",
+            "Your creativity inspires everyone around you.",
+            "You bring out the best in people with your kindness.",
+            "Your sense of humor can brighten anyone's day.",
+            "You have a wonderful way of seeing the good in every situation.",
+            "Your determination is truly admirable.",
+            "You make the world a better place just by being in it.",
+            "Your empathy and understanding are gifts to those around you.",
+            "You have an incredible talent for making complex things seem simple.",
+            "Your positive energy is absolutely contagious.",
+            "You're the kind of person others feel lucky to know.",
+            "Your wisdom and insight always seem to come at just the right time.",
+            "You have a beautiful way of expressing yourself.",
+            "Your courage to be authentically yourself is inspiring.",
+            "You bring such warmth and joy to every room you enter.",
+            "Your thoughtfulness never goes unnoticed.",
+            "You have an amazing ability to find solutions where others see problems.",
+            "Your genuine care for others shines through in everything you do.",
+            "You're incredibly talented at making people feel comfortable and welcome.",
+            "Your passion for life is absolutely infectious.",
+            "You have such a unique and wonderful perspective on the world.",
+            "Your resilience in facing challenges is truly remarkable.",
+            "You're a natural at bringing people together.",
+            "Your intelligence is matched only by your kindness.",
+            "You have an extraordinary gift for making ordinary moments special.",
+            "Your confidence inspires others to believe in themselves too.",
+            "You're incredibly good at seeing the potential in people and situations.",
+            "Your generosity of spirit is a rare and beautiful thing.",
+            "You have a wonderful ability to make others laugh and feel at ease.",
+            "Your dedication to growing and learning is truly admirable."
+        ];
+
+        let complimentCount = 0;
+        let isGenerating = false;
+
+        const complimentTextEl = document.getElementById('complimentText');
+        const generateBtnEl = document.getElementById('generateBtn');
+        const complimentCountEl = document.getElementById('complimentCount');
+
+        function updateButton(loading) {
+            if (loading) {
+                generateBtnEl.innerHTML = '<div class="loading-spinner"></div>Generating...';
+                generateBtnEl.disabled = true;
+            } else {
+                generateBtnEl.innerHTML = 'Generate New Compliment';
+                generateBtnEl.disabled = false;
+            }
+        }
+
+        function generateCompliment() {
+            if (isGenerating) return;
+            
+            isGenerating = true;
+            updateButton(true);
+            
+            // Fade out current compliment
+            complimentTextEl.classList.add('fade-out');
+            
+            setTimeout(() => {
+                // Get random compliment
+                const randomIndex = Math.floor(Math.random() * compliments.length);
+                const newCompliment = compliments[randomIndex];
+                
+                // Update text and fade in
+                complimentTextEl.textContent = '"' + newCompliment + '"';
+                complimentTextEl.classList.remove('fade-out');
+                complimentTextEl.classList.add('fade-in');
+                
+                // Update counter
+                complimentCount++;
+                complimentCountEl.textContent = complimentCount;
+                
+                // Reset button
+                updateButton(false);
+                isGenerating = false;
+            }, 300);
+        }
+
+        // Event listeners
+        generateBtnEl.addEventListener('click', generateCompliment);
+
+        // Keyboard shortcut (Space bar)
+        document.addEventListener('keydown', function(e) {
+            if (e.code === 'Space' && !isGenerating) {
+                e.preventDefault();
+                generateCompliment();
+            }
+        });
+
+        // Add some sparkle effect on page load
+        setTimeout(function() {
+            document.body.style.opacity = '1';
+        }, 100);
+    </script>
+</body>
+</html>
