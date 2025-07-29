@@ -461,115 +461,116 @@
     </div>
 
     <script>
-        // Compliments array
-       const ComplimentGenerator = () => {
-    "You have an amazing ability to make others feel valued and heard.",
-    "Your creativity inspires everyone around you.",
-    "You bring out the best in people with your kindness.",
-    "Your sense of humor can brighten anyone's day.",
-    "You have a wonderful way of seeing the good in every situation.",
-    "Your determination is truly admirable.",
-    "You make the world a better place just by being in it.",
-    "Your empathy and understanding are gifts to those around you.",
-    "You have an incredible talent for making complex things seem simple.",
-    "Your positive energy is absolutely contagious.",
-    "You're the kind of person others feel lucky to know.",
-    "Your wisdom and insight always seem to come at just the right time.",
-    "You have a beautiful way of expressing yourself.",
-    "Your courage to be authentically yourself is inspiring.",
-    "You bring such warmth and joy to every room you enter.",
-    "Your thoughtfulness never goes unnoticed.",
-    "You have an amazing ability to find solutions where others see problems.",
-    "Your genuine care for others shines through in everything you do.",
-    "You're incredibly talented at making people feel comfortable and welcome.",
-    "Your passion for life is absolutely infectious.",
-    "You have such a unique and wonderful perspective on the world.",
-    "Your resilience in facing challenges is truly remarkable.",
-    "You're a natural at bringing people together.",
-    "Your intelligence is matched only by your kindness.",
-    "You have an extraordinary gift for making ordinary moments special.",
-    "Your confidence inspires others to believe in themselves too.",
-    "You're incredibly good at seeing the potential in people and situations.",
-    "Your generosity of spirit is a rare and beautiful thing.",
-    "You have a wonderful ability to make others laugh and feel at ease.",
-    "Your dedication to growing and learning is truly admirable.",
-    "Your presence turns any room into a place of comfort and joy.",
-    "You inspire people to believe in their dreams.",
-    "You’re the kind of person who makes everything better just by showing up.",
-    "Your smile could brighten the darkest day.",
-    "You have a natural charm that puts others at ease.",
-    "You're great at bringing out the best in every situation.",
-    "You spread positivity without even trying.",
-    "You’re deeply appreciated more than you know.",
-    "You turn obstacles into opportunities.",
-    "You have a rare mix of humility and brilliance.",
-    "You make people feel like they matter — because they do.",
-    "You're someone people can always count on.",
-    "You’ve got a heart as big as your dreams.",
-    "You handle challenges with grace and strength.",
-    "Your laugh is the kind that makes others laugh too.",
-    "You're a magnet for good vibes.",
-    "You make growth feel exciting and worth chasing.",
-    "You bring calm to chaos like no one else can.",
-    "You’ve got the kind of courage that changes lives.",
-    "You have an eye for beauty in the unexpected.",
-    "You're a source of wisdom and peace.",
-    "You always find the right words to uplift others.",
-    "Your light shines even on cloudy days.",
-    "You’re a walking reminder that kindness matters.",
-    "You make others feel safe to be themselves.",
-    "You see the good in people and help them see it too.",
-    "You make ordinary conversations feel extraordinary.",
-    "Your strength is quiet, but undeniable.",
-    "You inspire greatness by simply being you.",
-    "You help others see their true worth.",
-    "Your energy brings life into any space.",
-    "You make people feel like they belong.",
-    "You’ve got an amazing sense of timing and intuition.",
-    "You uplift everyone in your orbit.",
-    "You make being kind look so easy.",
-    "Your perspective is refreshing and needed.",
-    "You carry joy with you and it’s contagious.",
-    "You're a true original — and it shows.",
-    "You build others up without even realizing it.",
-    "You're always growing, and it's beautiful to witness.",
-    "Your authenticity lights the way for others.",
-    "You make people feel heard and valued.",
-    "You have a unique way of seeing beauty in everything.",
-    "You’re a safe place in a chaotic world.",
-    "You create joy wherever you go.",
-    "You speak with wisdom far beyond your years.",
-    "You show up — and that means everything.",
-    "You give without expecting anything in return.",
-    "Your dreams are powerful, and your actions are louder.",
-    "You're a quiet storm of love and strength.",
-    "You inspire hope just by being yourself.",
-    "You’re a light in the lives of so many people.",
-    "You help people become the version of themselves they admire.",
-    "Your thoughtfulness turns little things into big things.",
-    "You never underestimate the power of a kind word.",
-    "You make hard times feel a little softer.",
-    "Your encouragement can change someone's entire day.",
-    "You're constantly evolving and it's inspiring to witness.",
-    "You give off main character energy — in the best way.",
-    "You treat others the way the world *should* be.",
-    "You’ve mastered the art of listening with your heart.",
-    "You remind people how amazing they really are.",
-    "You're like a walking affirmation to others.",
-    "You bring light even when you don’t feel like you're shining.",
-    "You always leave people better than you found them.",
-    "Your love for others is a superpower.",
-    "You're someone others look up to — and with good reason.",
-    "Your kindness is as limitless as your potential.",
-    "You have a heart that makes the world feel less heavy.",
-    "You're the definition of grace under pressure.",
-    "Your words are thoughtful, wise, and healing.",
-    "You’ve got a vibe that’s simply unmatched.",
-    "You’re a masterpiece in motion — keep creating.",
-    "You don’t just talk about compassion — you *live* it.",
-    "You’re lowkey the kindest person in the room, always.",
-    "You're a beautiful reminder that goodness still exists."
-  ];
+        // Compliments array - FIXED: Properly defined as an array
+        const compliments = [
+            "You have an amazing ability to make others feel valued and heard.",
+            "Your creativity inspires everyone around you.",
+            "You bring out the best in people with your kindness.",
+            "Your sense of humor can brighten anyone's day.",
+            "You have a wonderful way of seeing the good in every situation.",
+            "Your determination is truly admirable.",
+            "You make the world a better place just by being in it.",
+            "Your empathy and understanding are gifts to those around you.",
+            "You have an incredible talent for making complex things seem simple.",
+            "Your positive energy is absolutely contagious.",
+            "You're the kind of person others feel lucky to know.",
+            "Your wisdom and insight always seem to come at just the right time.",
+            "You have a beautiful way of expressing yourself.",
+            "Your courage to be authentically yourself is inspiring.",
+            "You bring such warmth and joy to every room you enter.",
+            "Your thoughtfulness never goes unnoticed.",
+            "You have an amazing ability to find solutions where others see problems.",
+            "Your genuine care for others shines through in everything you do.",
+            "You're incredibly talented at making people feel comfortable and welcome.",
+            "Your passion for life is absolutely infectious.",
+            "You have such a unique and wonderful perspective on the world.",
+            "Your resilience in facing challenges is truly remarkable.",
+            "You're a natural at bringing people together.",
+            "Your intelligence is matched only by your kindness.",
+            "You have an extraordinary gift for making ordinary moments special.",
+            "Your confidence inspires others to believe in themselves too.",
+            "You're incredibly good at seeing the potential in people and situations.",
+            "Your generosity of spirit is a rare and beautiful thing.",
+            "You have a wonderful ability to make others laugh and feel at ease.",
+            "Your dedication to growing and learning is truly admirable.",
+            "Your presence turns any room into a place of comfort and joy.",
+            "You inspire people to believe in their dreams.",
+            "You're the kind of person who makes everything better just by showing up.",
+            "Your smile could brighten the darkest day.",
+            "You have a natural charm that puts others at ease.",
+            "You're great at bringing out the best in every situation.",
+            "You spread positivity without even trying.",
+            "You're deeply appreciated more than you know.",
+            "You turn obstacles into opportunities.",
+            "You have a rare mix of humility and brilliance.",
+            "You make people feel like they matter — because they do.",
+            "You're someone people can always count on.",
+            "You've got a heart as big as your dreams.",
+            "You handle challenges with grace and strength.",
+            "Your laugh is the kind that makes others laugh too.",
+            "You're a magnet for good vibes.",
+            "You make growth feel exciting and worth chasing.",
+            "You bring calm to chaos like no one else can.",
+            "You've got the kind of courage that changes lives.",
+            "You have an eye for beauty in the unexpected.",
+            "You're a source of wisdom and peace.",
+            "You always find the right words to uplift others.",
+            "Your light shines even on cloudy days.",
+            "You're a walking reminder that kindness matters.",
+            "You make others feel safe to be themselves.",
+            "You see the good in people and help them see it too.",
+            "You make ordinary conversations feel extraordinary.",
+            "Your strength is quiet, but undeniable.",
+            "You inspire greatness by simply being you.",
+            "You help others see their true worth.",
+            "Your energy brings life into any space.",
+            "You make people feel like they belong.",
+            "You've got an amazing sense of timing and intuition.",
+            "You uplift everyone in your orbit.",
+            "You make being kind look so easy.",
+            "Your perspective is refreshing and needed.",
+            "You carry joy with you and it's contagious.",
+            "You're a true original — and it shows.",
+            "You build others up without even realizing it.",
+            "You're always growing, and it's beautiful to witness.",
+            "Your authenticity lights the way for others.",
+            "You make people feel heard and valued.",
+            "You have a unique way of seeing beauty in everything.",
+            "You're a safe place in a chaotic world.",
+            "You create joy wherever you go.",
+            "You speak with wisdom far beyond your years.",
+            "You show up — and that means everything.",
+            "You give without expecting anything in return.",
+            "Your dreams are powerful, and your actions are louder.",
+            "You're a quiet storm of love and strength.",
+            "You inspire hope just by being yourself.",
+            "You're a light in the lives of so many people.",
+            "You help people become the version of themselves they admire.",
+            "Your thoughtfulness turns little things into big things.",
+            "You never underestimate the power of a kind word.",
+            "You make hard times feel a little softer.",
+            "Your encouragement can change someone's entire day.",
+            "You're constantly evolving and it's inspiring to witness.",
+            "You give off main character energy — in the best way.",
+            "You treat others the way the world *should* be.",
+            "You've mastered the art of listening with your heart.",
+            "You remind people how amazing they really are.",
+            "You're like a walking affirmation to others.",
+            "You bring light even when you don't feel like you're shining.",
+            "You always leave people better than you found them.",
+            "Your love for others is a superpower.",
+            "You're someone others look up to — and with good reason.",
+            "Your kindness is as limitless as your potential.",
+            "You have a heart that makes the world feel less heavy.",
+            "You're the definition of grace under pressure.",
+            "Your words are thoughtful, wise, and healing.",
+            "You've got a vibe that's simply unmatched.",
+            "You're a masterpiece in motion — keep creating.",
+            "You don't just talk about compassion — you *live* it.",
+            "You're lowkey the kindest person in the room, always.",
+            "You're a beautiful reminder that goodness still exists."
+        ];
+
         // Global variables
         let complimentCount = 0;
         let isGenerating = false;
@@ -578,7 +579,6 @@
         // DOM elements
         const complimentTextEl = document.getElementById('complimentText');
         const generateBtnEl = document.getElementById('generateBtn');
-        const complimentCountEl = document.getElementById('complimentCount');
 
         // Update button state
         function updateButton(loading) {
@@ -637,7 +637,6 @@
                 
                 // Update counter with animation
                 complimentCount++;
-                animateNumber(complimentCountEl, complimentCount);
                 
                 // Reset button
                 setTimeout(function() {
@@ -648,22 +647,7 @@
             }, 400);
         }
 
-        // Animate number counter
-        function animateNumber(element, targetNumber) {
-            const currentNumber = parseInt(element.textContent) || 0;
-            const increment = targetNumber > currentNumber ? 1 : -1;
-            const steps = Math.abs(targetNumber - currentNumber);
-            let current = currentNumber;
-            
-            const timer = setInterval(function() {
-                current += increment;
-                element.textContent = current;
-                
-                if (current === targetNumber) {
-                    clearInterval(timer);
-                }
-            }, 50);
-        }
+
 
         // Event listeners
         generateBtnEl.addEventListener('click', generateCompliment);
